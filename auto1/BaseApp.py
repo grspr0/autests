@@ -8,7 +8,7 @@ class BasePage:
         self.driver = driver
         self.base_url = "https://id.atlassian.com/login?continue=https%3A%2F%2Fqwert657.atlassian.net%2Flogin%3FredirectCount%3D1%26application%3Djira&application=jira"
 
-    def find_element(self, locator, time=10):
+    def find_element(self, locator, time=20):
         return WebDriverWait(self.driver, time).until(EC.presence_of_element_located(locator),
                                                       message=f"Can't find element by locator {locator}")
 
