@@ -12,7 +12,7 @@ def test_activetrial(browser):
     jira_login = LoginLogout(browser)
     ReportBuilder = RB(browser)
     jira_login.go_to_site()
-    jira_login.login_process("kononovi467@gmail.com", "Solo1996")
+    jira_login.login_process("", "")
     jira_apps = Apps(browser)
     jira_apps.access_apps()
     jira_apps.access_manage_your_apps()
