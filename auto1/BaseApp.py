@@ -1,5 +1,9 @@
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.common.alert import Alert
+from selenium.webdriver.common.by import By
+import time
 
 
 class BasePage:
@@ -18,3 +22,12 @@ class BasePage:
 
     def go_to_site(self):
         return self.driver.get(self.base_url)
+
+    def go_to_frame(self):
+        time.sleep(7.5)
+        return self.driver.switch_to.frame(self.driver.find_element(By.TAG_NAME, "iframe"))
+
+    def go_out_frame(self):
+        time.sleep(3.5)
+        return self.driver.switch_to.default_content()
+
