@@ -7,7 +7,7 @@ class ReportsLocators:
     shared_but = (By.XPATH, "//div[@id='shared']")
     create_rep_but = (By.XPATH, "//div[@id='createReport']")
     timeline_report_type_button = (By.XPATH,
-                                   "//*[@id='root']/div/div/div[2]/div[5]/div[2]/div[1]/div[2]")
+                                   "//div[@data-report-type='timeline'")
     failed_alert_window = (By.XPATH,
                            "# //*[contains(text(),'You do not have a valid license for the app.')")
 

@@ -12,22 +12,26 @@ class BasePage:
         self.driver = driver
         self.base_url = "https://id.atlassian.com/login?continue=https%3A%2F%2Fqwert657.atlassian.net%2Flogin%3FredirectCount%3D1%26application%3Djira&application=jira"
 
-    def find_element(self, locator, time=20):
-        return WebDriverWait(self.driver, time).until(EC.presence_of_element_located(locator),
-                                                      message=f"Can't find element by locator {locator}")
+    def find_element(self, locator):
+        return WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(locator),
+                                                    message=f"Can't find element by locator {locator}")
 
-    def find_elements(self, locator, time=10):
-        return WebDriverWait(self.driver, time).until(EC.presence_of_all_elements_located(locator),
-                                                      message=f"Can't find elements by locator {locator}")
+    def find_elements(self, locator):
+        return WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(locator),
+                                                    message=f"Can't find elements by locator {locator}")
+
+    def switch_to(self, locator):
+        return WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(locator),
+                                                    message=f"Can't find elements by locator {locator}")
 
     def go_to_site(self):
         return self.driver.get(self.base_url)
 
     def go_to_frame(self):
-        time.sleep(7.5)
+        # time.sleep(7.5)
         return self.driver.switch_to.frame(self.driver.find_element(By.TAG_NAME, "iframe"))
 
     def go_out_frame(self):
-        time.sleep(3.5)
+        # time.sleep(3.5)
         return self.driver.switch_to.default_content()
 

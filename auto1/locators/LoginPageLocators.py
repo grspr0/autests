@@ -5,29 +5,30 @@ import time
 
 class LoginLocators:
 
-    mail_form = (By.XPATH, "//input[@id='username']")
-    subm_button = (By.XPATH, "//button[@id='login-submit']")
-    password_form = (By.XPATH, "//input[@id='password']")
-    login_but = (By.XPATH, "//button[@id='login-submit']")
-    profile_icon = (By.XPATH,
-                    "//span[@data-testid='atlassian-navigation--secondary-actions--profile--menu-trigger']")
-    logout_button = (By.XPATH,
-                     "//a[@data-testid='atlassian-navigation--secondary-actions--profile--menu-popup--footer--items--item-log-out']")
-    logout_submit_button = (By.XPATH, "//*[@id='logout-submit']")
+    login_form = (By.CSS_SELECTOR, "#username")
+    continue_button = (By.CSS_SELECTOR, "#login-submit")
+    password_form = (By.CSS_SELECTOR,
+                     "#password")
+    login_but = (By.CSS_SELECTOR, "#login-submit")
+    profile_icon = (By.CSS_SELECTOR,
+                    "#jira-frontend > div.sc-brqgnP.jbCidx > div > div.sc-jWBwVP.klvkUU > div > header > div > span:nth-child(5) > div > button > span > span > div")
+    logout_button = (By.CSS_SELECTOR,
+                    "#jira > div.atlaskit-portal-container > div:nth-child(4) > div > span > div > div > div.css-usnzv1 > span > a > div > span > span")
+    logout_submit_button = (By.CSS_SELECTOR, "#logout-submit")
+
 
 class LoginLogout(BasePage):
 
-
     def login_process(self, login, password):
-        login_form = self.find_element(LoginLocators.mail_form, time=2)
+        login_form = self.find_element(LoginLocators.login_form)
         login_form.click()
         login_form.send_keys(login)
-        self.find_element(LoginLocators.subm_button, time=2).click()
-        time.sleep(1)
-        password_form = self.find_element(LoginLocators.password_form, time=2)
+        self.find_element(LoginLocators.continue_button).click()
+        time.sleep(0.2)
+        password_form = self.find_element(LoginLocators.password_form)
         password_form.click()
         password_form.send_keys(password)
-        self.find_element(LoginLocators.login_but, time=2).click()
+        self.find_element(LoginLocators.login_but).click()
         return login, password
 
     def logout_process(self):

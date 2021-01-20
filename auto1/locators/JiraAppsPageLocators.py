@@ -15,9 +15,9 @@ class JiraAppsLocators:
     find_new_but = (By.XPATH,
                     "//a[@data-testid = 'atlassian-navigation--primary-actions--addons--menu-popup--footer--items--item-find-new-apps']")
     manage_your_apps_but = (By.XPATH,
-                            "//a[@data-testid = 'atlassian-navigation--primary-actions--addons--menu-popup--footer--items--item-manage-apps']")
+                        "//a[@data-testid = 'atlassian-navigation--primary-actions--addons--menu-popup--footer--items--item-manage-apps']")
     view_app_request_but = (By.XPATH,
-                            "//a[@data-testid = 'atlassian-navigation--primary-actions--addons--menu-popup--footer--items--item-app-requests']")
+                        "//a[@data-testid = 'atlassian-navigation--primary-actions--addons--menu-popup--footer--items--item-app-requests']")
     iframe_timesheets = (By.XPATH,
                          "//iframe[@id='proficient.developer.plugins.jira.worklog-pivot__worklogs-page__c896d8e']")
 
@@ -51,6 +51,7 @@ class Apps(BasePage):
         return find_new_apps
 
     def access_manage_your_apps(self):
+        time.sleep(0.5)
         manage_your_apps = self.find_element(JiraAppsLocators.manage_your_apps_but)
         manage_your_apps.click()
         return manage_your_apps
